@@ -56,10 +56,13 @@ h1 .pink{
 }
 
 .number{
-  font-size: 5rem;
+  font-size: 8rem;
+  margin: 1rem 2rem;
 }
 
 .text{
   font-size: 2rem;
   color: var(--colorText);
+  line-height: center;
+  margin: 1rem 2rem;
 }
