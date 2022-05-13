@@ -1,0 +1,6 @@
+data do meu aniversário com a data atual
+
+dia - base/3600/24
+hora- base/3600%24
+min - base/60%60
+seg - base%60
