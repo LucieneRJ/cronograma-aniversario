@@ -1,33 +1,27 @@
-const day18 = document.getElementById("day");
-const hour23 = document.getElementById("hour");
-const min28 = document.getElementById("min");
-const sec33 = document.getElementById("sec");
 
-const newYears = "1 Jan 2023";
+var birthay = new Date("August 14, 2022 06:00:00").getTime();
+var days, hours, minutes, seconds;
 
-function cronometro(){
-  const newYearsDate = new Date(newYears);
-  const currentDate = new Date();
+setInterval(function() {
+    var current = new Date().getTime();
+    
+    var secondsTotal = (birthay - current)/1000; 
 
-  const totalSeconds = (newYearsDate - currentDate) / 1000;
-  const days = Math.floor(totalSeconds / 3600 / 24);
-  const hours = Math.floor(totalSeconds / 3600) % 24;
-  const minutes = Math.floor(totalSeconds / 60) % 60;
-  const seconds = Math.floor(totalSeconds) % 60;
+    days = parseInt(secondsTotal/86400);
+    secondsTotal = secondsTotal%86400;  /*tirar os valores restantes*/
+    
+    hours = parseInt(secondsTotal/3600);    /* porque a cada hora temos 3600 segundos*/
+    secondsTotal = secondsTotal%3600;
 
-  day18.innerHTML = days;
-  hour23.innerHTML = formatTime(hours);
-  min28.innerHTML = formatTime(minutes);
-  sec33.innerHTML = formatTime(seconds);
+    minutes = parseInt(secondsTotal/60);        /* a cada minuto temos 60 segundos */
+    seconds = parseInt(secondsTotal%60); /*pegar valores inteiros usando parseInt*/
 
-};
+    document.getElementById("day").innerHTML = days;
+    document.getElementById("hour").innerHTML = hours;
+    document.getElementById("min").innerHTML = minutes;
+    document.getElementById("sec").innerHTML = seconds;
+    
 
-function formatTime(time) {
-  return time < 10 ? `0${time}` : time;
-
-}
+}, 1000); 
 
 
-cronometro();
-
-setInterval(cronometro, 1000);
